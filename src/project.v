@@ -1,4 +1,3 @@
-
 `default_nettype none
 
 module tt_um_nanosilicon (
@@ -16,7 +15,7 @@ module tt_um_nanosilicon (
     wire halted;
 
     jh8_cpu #(
-        .ROM_INIT_FILE("src/program.hex")
+        .ROM_INIT_FILE("..src/program.hex")
     ) cpu (
         .clk(clk),
         .reset(~rst_n),
