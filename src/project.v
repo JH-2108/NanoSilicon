@@ -14,9 +14,15 @@ module tt_um_nanosilicon (
     wire [7:0] pc;
     wire halted;
 
-    jh8_cpu #(
-        .ROM_INIT_FILE("../src/program.hex")
-    ) cpu (
+    `ifdef SYNTHESIS
+        jh8_cpu #(
+            .ROM_INIT_FILE("src/program.hex")
+        ) cpu (
+    `else
+        jh8_cpu #(
+            .ROM_INIT_FILE("../src/program.hex")
+        ) cpu (
+    `endif
         .clk(clk),
         .reset(~rst_n),
         .pc(pc),
