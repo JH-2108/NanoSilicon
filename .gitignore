@@ -1,0 +1,17 @@
+# Compiled simulation outputs
+sim/alu_test
+sim/cpu_compile
+sim/cpu_test
+sim/decoder_test
+sim/flags_test
+sim/instruction_test
+sim/jmp_test
+sim/pc_test
+sim/ram_test
+sim/register_test
+sim/rom_test
+sim/*.out
+# Temporary files
+*.vcd
+*.log
+*.tmp
