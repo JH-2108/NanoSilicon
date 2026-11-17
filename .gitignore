@@ -1,4 +1,10 @@
-# Compiled simulation outputs
+sim/*.vvp
+sim/registers_test
+sim/latest_gds_logs/
+sim/nanosilicon_netlist.json
+sim/GDS_logs.zip
+GDS_logs.zip
+sim/synthesis_report.txt
 sim/alu_test
 sim/cpu_compile
 sim/cpu_test
@@ -6,12 +12,9 @@ sim/decoder_test
 sim/flags_test
 sim/instruction_test
 sim/jmp_test
+sim/nanosilicon_cpu.vcd
 sim/pc_test
 sim/ram_test
 sim/register_test
 sim/rom_test
 sim/*.out
-# Temporary files
-*.vcd
-*.log
-*.tmp
