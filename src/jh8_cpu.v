@@ -95,17 +95,17 @@ module jh8_cpu #(
         .write_data(register_data_d),
         .read_data(ram_read_data)
     );
-    reg[7:0] selected_writeback;
-    always @(*) begin
-        case (writeback_select)
-            2'b00: selected_writeback = alu_result;
-            2'b01: selected_writeback = register_data_s;
-            2'b10: selected_writeback = immediate_data;
-            2'b11: selected_writeback = ram_read_data;
-            default: selected_writeback = 8'h00;
-        endcase
-    end
-    assign register_write_data = selected_writeback;
+    wire [3:0] writeback_decode;
+
+assign writeback_decode[0] = (writeback_select == 2'b00);
+assign writeback_decode[1] = (writeback_select == 2'b01);
+assign writeback_decode[2] = (writeback_select == 2'b10);
+assign writeback_decode[3] = (writeback_select == 2'b11);
+assign register_write_data =
+    ({8{writeback_decode[0]}} & alu_result) |
+    ({8{writeback_decode[1]}} & register_data_s) |
+    ({8{writeback_decode[2]}} & immediate_data) |
+    ({8{writeback_decode[3]}} & ram_read_data);
     wire zero_flag;
     wire carry_flag;
     wire negative_flag;
