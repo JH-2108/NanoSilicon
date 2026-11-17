@@ -1,5 +1,9 @@
 `timescale 1ns/1ps
 module tb_jh8_cpu;
+    initial begin
+        $dumpfile("sim/nanosilicon_cpu.vcd");
+        $dumpvars(0, tb_jh8_cpu);
+    end
     reg clk;
     reg reset;
     wire [7:0] pc;
