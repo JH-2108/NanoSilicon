@@ -113,7 +113,6 @@ module jh8_decoder (
                 memory_write = 1'b1;
                 instruction_length = 2'd2;
             end
-
             4'hE: begin
                 compare = 1'b1;
                 alu_operation = 4'h4;

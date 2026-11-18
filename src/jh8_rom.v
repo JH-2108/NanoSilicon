@@ -1,6 +1,6 @@
 module jh8_rom #(
     parameter INIT_FILE = "sim/program.hex"
-) (
+)(
     input wire [7:0] address,
     output wire [7:0] instruction,
     input wire [7:0] immediate_address,
@@ -12,14 +12,8 @@ module jh8_rom #(
     initial begin
         for (i = 0; i < 256; i = i + 1)
             memory[i] = 8'h00;
-        memory[0] = 8'h20;
-        memory[1] = 8'h19;
-        memory[2] = 8'h24;
-        memory[3] = 8'h0A;
-        memory[4] = 8'h31;
-        memory[5] = 8'hD0;
-        memory[6] = 8'h80;
-        memory[7] = 8'hF0;
+            
+        $readmemh(INIT_FILE, memory); 
     end
     assign instruction = memory[address];
     assign immediate_data = memory[immediate_address];

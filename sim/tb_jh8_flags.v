@@ -1,7 +1,5 @@
 `timescale 1ns/1ps
-
 module tb_jh8_flags;
-
     reg clk;
     reg reset;
     reg write_enable;
@@ -12,7 +10,6 @@ module tb_jh8_flags;
     wire carry_flag;
     wire negative_flag;
     integer errors;
-
     jh8_flags uut (
         .clk(clk),
         .reset(reset),
@@ -24,8 +21,7 @@ module tb_jh8_flags;
         .carry_flag(carry_flag),
         .negative_flag(negative_flag)
     );
-
-    always #5 clk = ~clk;
+    always #5 clk =  ~clk;
     task check_flags;
         input expected_zero;
         input expected_carry;
@@ -35,10 +31,8 @@ module tb_jh8_flags;
             if (zero_flag !== expected_zero ||
                 carry_flag !== expected_carry ||
                 negative_flag !== expected_negative) begin
-
                 $display("FAIL: Z=%b C=%b N=%b",
                     zero_flag, carry_flag, negative_flag);
-
                 errors = errors + 1;
             end
             else begin
@@ -67,7 +61,6 @@ module tb_jh8_flags;
         zero_in = 1;
         carry_in = 1;
         negative_in = 1;
-
         @(posedge clk);
         #1;
         check_flags(1, 1, 1);
@@ -83,9 +76,7 @@ module tb_jh8_flags;
         check_flags(1, 1, 1);
 
         @(negedge clk);
-
-        write_enable = 1;
-
+        write_enable=  1;
         @(posedge clk);
         #1;
         check_flags(0, 0, 0);

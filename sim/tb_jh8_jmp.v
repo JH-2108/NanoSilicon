@@ -15,10 +15,9 @@ module tb_jh8_jmp;
     );
     always #5 clk = ~clk;
     initial begin
-        clk = 0;
-        reset= 1;
+        clk =0;
+        reset= 1; 
         cycles = 0;
-
         #12;
         reset = 0;
         while (!halted && cycles < 30) begin
@@ -30,12 +29,11 @@ module tb_jh8_jmp;
                 uut.registers.registers[0]);
         end
         if (!halted)
-            $fatal(1, "FAIL: JMP test did not halt");
+            $fatal(1, "FAIL: JMP test did not halt");  
+        if (uut.registers.registers[0] !== 8'h22)  
+            $fatal(1, "FAIL: JMP did not reach the correct instruction");  
 
-        if (uut.registers.registers[0] !== 8'h22)
-            $fatal(1, "FAIL: JMP did not reach the correct instruction");
-
-        $display("PASS: Unconditional JMP works!");
+        $display("PASS: Unconditional JMP works!!!");
         $finish;
     end
 endmodule

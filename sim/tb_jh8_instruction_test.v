@@ -13,7 +13,6 @@ module tb_jh8_instruction_test;
         .pc(pc),
         .halted(halted)
     );
-
     always #5 clk = ~clk;
     initial begin
         clk = 0;
@@ -22,19 +21,19 @@ module tb_jh8_instruction_test;
         #12;
         reset = 0;
         $display("Starting extended JH-8 instruction test");
-        $display("Cycle | PC | Instr | R0 | R1 | R2 | R3 | RAM128");
+        $display("Cycle | PC| Instr| R0 | R1 | R2 | R3 |RAM128 ");
     
-        while (!halted && cycles < 100) begin
-            @(posedge clk);
+        while (!halted && cycles < 100) begin 
+            @(posedge clk); 
             #1;
-            cycles = cycles + 1;
+            cycles = cycles + 1; 
             $display(
-                "%3d | %h | %h | %h | %h | %h | %h | %h",
-                cycles,
-                pc,
-                uut.instruction,
-                uut.registers.registers[0],
-                uut.registers.registers[1],
+                "%3d | %h | %h | %h | %h |%h| %h |%h",   
+                cycles, 
+                pc, 
+                uut.instruction, 
+                uut.registers.registers[0], 
+                uut.registers.registers[1], 
                 uut.registers.registers[2],
                 uut.registers.registers[3],
                 uut.ram.memory[128]
@@ -42,9 +41,9 @@ module tb_jh8_instruction_test;
             $display(
                 "    RegWrite=%b MemWrite=%b MemRead=%b Addr=%h Data=%h",
                 uut.register_write,
-                uut.memory_write,
+                uut.memory_write, 
                 uut.memory_read,
-                uut.immediate_data,
+                uut.immediate_data, 
                 uut.register_data_d
             );
         end
