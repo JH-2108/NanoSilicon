@@ -13,7 +13,7 @@ module tt_um_nanosilicon (
     wire halted;
     `ifdef SYNTHESIS
         jh8_cpu #(
-            .ROM_INIT_FILE("src/program.hex")
+            .ROM_INIT_FILE("program.hex")
         ) cpu (
     `else
         jh8_cpu #(
@@ -26,10 +26,8 @@ module tt_um_nanosilicon (
         .halted(halted)
     );
     assign uo_out = pc;
-
     assign uio_out = {7'b0, halted};
     assign uio_oe  = 8'b00000001;
     wire _unused = &{ena, ui_in, uio_in, 1'b0};
 endmodule
-
 `default_nettype wire
