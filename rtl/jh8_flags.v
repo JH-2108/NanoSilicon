@@ -12,8 +12,7 @@ module jh8_flags (
     always @(posedge clk) begin
 
         if(reset) begin
-
-            zero_flag <=1'b0;
+            zero_flag <= 1'b0;
             carry_flag <= 1'b0;
             negative_flag <= 1'b0;
         end
@@ -21,6 +20,7 @@ module jh8_flags (
             zero_flag <= zero_in;
             carry_flag <= carry_in;
             negative_flag <= negative_in;
+
         end
     end
 endmodule

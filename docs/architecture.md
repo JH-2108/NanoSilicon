@@ -128,7 +128,8 @@ Each register is independently addressed using a 2-bit address.
 - Two independent combinational read ports. 
 - One synchronous write port
 - Independent write-enable decoding for each register
-- Synchronous, active high reset. 
+- Synchronous and active high reset. 
+- The register file uses independent write-enable signals for each of the four registers, decoded from the 2 bit write address. 
 
 When reset is asserted on a rising clock edge, all four registers are cleared to zero. 
 
@@ -163,14 +164,24 @@ For a memory write, the destination register's value is supplied as write data.
 
 For a memory read, the RAM output is selected by the writeback logic and cann be written into the destination register. 
 
+### RAM
+The RAM module provides 256 bytes of data storage, addressed using an 8 bit address. 
+
+- Capacity: 256 x 8 bits (256 bytes). 
+- Address width: 8 bits.
+- Data width: 8 bits.
+- Read operations: Asynchronous, using a combinational memory lookup. 
+- Write operation: Synchronous, occuring on the rising edge of the clock when write_enable is asserted. 
+
+The RAM is accessed by the CPU using the immediate address field supplied by the instruction. 
+
 ## Processer status flag
 The status flag module is implemented in jh8_flags.v. 
-
 
 It stores three processor status flags
 |Flag|Meaning|
 |---|---|
-|Zero|The most recent flag updating ALU result was zero|
+|Zero|The most recent ALU result associated with a flag update was zero|
 |Carry| The ALU generated a carry output|
 |Negative| Bit 7 of the ALU result was set|
 
@@ -180,7 +191,7 @@ Flag updates are controlled by the decoder's flag_write signal and are disabled 
 
 The zero flag is used by conditional branch instructions. 
 
-## Program counter 
+### Program counter 
 The  program counter is inside f jh8_pc.v
 
 It maintains the address of the current instruction and receives the next address from the CPU control logic. 
@@ -214,7 +225,7 @@ This allows the processor to support ALU operations, register transfers, immedia
 
 ## Instruction execution flow 
 
-The JH-8 CPU uses a clocked execution architecture in which the instruction decoder and datapath generate the required control and data signals.
+The JH-8 uses a clocked execution architecutre. Combinational logic handles instruction decoding, operand selection, ALU operations, writeback selection and next address calculaation, while sequential logic updates registers, memory, flags, the program counter, and halt state on clock edges.
 
 The general execution process is:
 1. Instruction fetching: The program counter addresses the instruction ROM.

@@ -11,6 +11,6 @@ module jh8_pc (
         end
         else if (enable) begin
             pc <= next_pc;
-        end
+        end 
     end
 endmodule

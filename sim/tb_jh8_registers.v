@@ -76,7 +76,6 @@ module tb_jh8_registers;
         check_register(0, 1, 25, 10);
         check_register(2, 3, 100, 200);
         check_register(3, 0, 200, 25);
-
         @(negedge clk);
         reset = 1;
         @(negedge clk);

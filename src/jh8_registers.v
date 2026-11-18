@@ -11,10 +11,10 @@ module jh8_registers (
 );
     reg [7:0] registers [0:3];
     wire [3:0] select_a;
-    wire [3:0] select_b;
+    wire[3:0] select_b;
     wire write_reg0;
     wire write_reg1;
-    wire write_reg2;
+    wire  write_reg2;
     wire write_reg3;
     assign select_a = 4'b0001 << read_addr_a;
     assign select_b = 4'b0001 << read_addr_b;

@@ -1,4 +1,3 @@
-
 module jh8_decoder (
     input wire [7:0] instruction,
     output reg [1:0] instruction_length,

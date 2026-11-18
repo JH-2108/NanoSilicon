@@ -24,14 +24,16 @@ module tb_jh8_cpu;
         reset = 0;
 
         $display("Starting JH-8 execution");
-        $display("Cycle| PC | Instruction | Opcode| Length| Halt");
+        $display("Cycle | PC | Instruction| Opcode | Length | Halt");
+
         while (!halted && cycles < 100) begin
             @(posedge clk);
             #1;
             cycles = cycles + 1;
+
             $display(
-                "%5d |%h | %h| %h| %d| %b",
-                cycles,  
+                "%5d | %h | %h| %h | %d| %b",
+                cycles,
                 pc,
                 uut.instruction,
                 uut.opcode,
@@ -45,6 +47,7 @@ module tb_jh8_cpu;
         $display("RAM[128] = %d", uut.ram.memory[128]);
         $display("Final PC = %d", pc);
         $display("Halted = %b", halted);
+
         if (!halted)
             $display("FAIL: CPU did not halt");
         else if (uut.registers.registers[0] !== 8'd35)

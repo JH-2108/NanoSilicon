@@ -18,7 +18,6 @@ module tb_jh8_pc;
         reset = 1;
         enable = 0;
         next_pc = 0;
-
         @(posedge clk);
         #1;
         if (pc !== 8'h00)
