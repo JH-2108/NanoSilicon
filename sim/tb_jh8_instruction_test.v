@@ -22,14 +22,14 @@ module tb_jh8_instruction_test;
         #12;
         reset = 0;
         $display("Starting extended JH-8 instruction test");
-        $display("Cycle | PC | Instr | R0 | R1 | R2 | R3 | RAM128");
+        $display("Cycle | PC | Instr | R0| R1 | R2 | R3 | RAM128");
     
         while (!halted && cycles < 100) begin
             @(posedge clk);
             #1;
             cycles = cycles + 1;
             $display(
-                "%3d | %h | %h | %h | %h | %h | %h | %h",
+                "%3d | %h | %h |%h | %h | %h| %h | %h",
                 cycles,
                 pc,
                 uut.instruction,

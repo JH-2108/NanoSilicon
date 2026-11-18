@@ -1,7 +1,5 @@
 `timescale 1ns/1ps
-
 module tb_jh8_flags;
-
     reg clk;
     reg reset;
     reg write_enable;
@@ -12,7 +10,6 @@ module tb_jh8_flags;
     wire carry_flag;
     wire negative_flag;
     integer errors;
-
     jh8_flags uut (
         .clk(clk),
         .reset(reset),

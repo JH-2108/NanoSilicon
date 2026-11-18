@@ -1,4 +1,3 @@
-
 `timescale 1ns/1ps
 module tb_jh8_pc;
     reg clk;
@@ -19,12 +18,10 @@ module tb_jh8_pc;
         reset = 1;
         enable = 0;
         next_pc = 0;
-
         @(posedge clk);
         #1;
         if (pc !== 8'h00)
             $fatal(1, "FAIL: Reset");
-
         reset = 0;
         enable = 1;
         next_pc = 8'h01;

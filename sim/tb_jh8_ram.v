@@ -1,5 +1,4 @@
 `timescale 1ns/1ps
-
 module tb_jh8_ram;
     reg clk;
     reg write_enable;
@@ -7,7 +6,6 @@ module tb_jh8_ram;
     reg [7:0] write_data;
     wire[7:0] read_data;
     integer errors;
-
     jh8_ram uut (
         .clk(clk),
         .write_enable(write_enable),
@@ -15,7 +13,6 @@ module tb_jh8_ram;
         .write_data(write_data),
         .read_data(read_data)
     );
-
     always #5 clk = ~clk;
     task write_memory;
         input [7:0] location;

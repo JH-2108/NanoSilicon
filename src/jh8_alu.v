@@ -7,7 +7,6 @@ module jh8_alu (
     output wire zero_flag,
     output wire negative_flag
 );
-
     wire [7:0] add_p;
     wire [7:0] add_g;
     wire [8:0] add_c;

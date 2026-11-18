@@ -1,16 +1,12 @@
 `timescale 1ns/1ps
-
 module tb_jh8_rom;
-
     reg [7:0] address;
     wire [7:0] instruction;
     integer errors;
-    
     jh8_rom uut (
         .address(address),
         .instruction(instruction)
     );
-
     task check_rom;
         input [7:0] test_address;
         input [7:0] expected_value;
@@ -37,9 +33,7 @@ module tb_jh8_rom;
         end
     endtask
     initial begin
-
         errors = 0;
-
         check_rom(8'd0, 8'h20);
         check_rom(8'd1, 8'h19);
         check_rom(8'd2, 8'h21);

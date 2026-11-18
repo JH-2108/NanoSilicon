@@ -24,7 +24,7 @@ module tb_jh8_cpu;
         reset = 0;
 
         $display("Starting JH-8 execution");
-        $display("Cycle | PC | Instruction | Opcode | Length | Halt");
+        $display("Cycle | PC | Instruction| Opcode | Length | Halt");
 
         while (!halted && cycles < 100) begin
             @(posedge clk);

@@ -18,7 +18,6 @@ module tb_jh8_jmp;
         clk = 0;
         reset= 1;
         cycles = 0;
-
         #12;
         reset = 0;
         while (!halted && cycles < 30) begin

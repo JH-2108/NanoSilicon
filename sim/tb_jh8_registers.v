@@ -72,7 +72,6 @@ module tb_jh8_registers;
             end
         end
     endtask
-
     initial begin
         clk= 0;
         reset= 1;
@@ -82,10 +81,8 @@ module tb_jh8_registers;
         read_addr_a= 0;
         read_addr_b= 0;
         errors= 0;
-
         @(negedge clk);
         reset= 0;
-
         check_register(0, 1, 0, 0);
         write_register(0, 25);
         write_register(1, 10);
@@ -93,12 +90,9 @@ module tb_jh8_registers;
         write_register(3, 200);
         check_register(0, 1, 25, 10);
         check_register(2, 3, 100, 200);
-
         check_register(3, 0, 200, 25);
-
         @(negedge clk);
         reset = 1;
-
         @(negedge clk);
         reset = 0;
 

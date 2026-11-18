@@ -1,4 +1,3 @@
-
 module tb_jh8_decoder;
     reg [7:0] instruction;
     wire[3:0] opcode;

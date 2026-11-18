@@ -7,7 +7,6 @@ module jh8_rom #(
     output wire [7:0] immediate_data
 );
     reg [7:0] memory [0:255];
-
     initial begin
         $readmemh(INIT_FILE, memory);
     end

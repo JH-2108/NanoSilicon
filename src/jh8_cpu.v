@@ -33,7 +33,6 @@ module jh8_cpu #(
     wire[1:0] instruction_length;
     wire[1:0]writeback_select;
     wire flag_write;
-
     jh8_decoder decoder (
         .instruction(instruction),
         .opcode(opcode),
