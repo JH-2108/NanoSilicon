@@ -201,4 +201,8 @@ Planned areas of development and small improvements would be in:
 * Further ASIC implementation and physical verificaation
 
 
+## Small side notes and extras
+JH-8 was named after JH (my name: Jie Hao) and 8: 8 bit. 
+
+**Why I decided to make this**: Well, after Jensen Huang stepped down as CEO, which was a rly big news, I decided to learn more into his life and understand how he created NVIDIA, so I went through his history and learned that he made a chip for a GPU card. I decided that I wanted to create my own CPU, a small one to just try something new!!! 
 
