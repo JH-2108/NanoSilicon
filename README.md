@@ -99,7 +99,7 @@ JH-8 supports 16 opcodes.
 |0xE|CMP|1 byte| compare registers|
 |0XF|HLT|1 byte| halt execution|
 
-For detailed instruction behavior and flag semantics, see the [instruction set documentation](instruction_set.md)
+For detailed instruction behavior and flag semantics, see the [instruction set documentation](docs/instruction_set.md)
 
 ## RTL Modules 
 |Module|File|Function|
