@@ -185,7 +185,9 @@ The recorded physical verification results are:
 ## GDS Layout visualization 
 An interactive visualization of the generated GDS layout will be added here. 
 
-A photo will be added here
+<img width="1242" height="636" alt="image" src="https://github.com/user-attachments/assets/2982c47a-724a-4c54-aafc-69098ebe0142" />
+
+you can see the GDS visualizer [here](https://gds-viewer.tinytapeout.com/?pdk=gf180mcuD&model=https%3A%2F%2Fjh-2108.github.io%2FNanoSilicon%2F%2Ftinytapeout.oas)
 
 ## Documentation 
 Further technical documentation is available in the docs/ directory: 
