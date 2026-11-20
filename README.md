@@ -65,7 +65,8 @@ The processor consists of the following major components:
 
 ## Architecture Diagram
 
-A photo will be added here later 
+<img width="783" height="597" alt="image" src="https://github.com/user-attachments/assets/0fb1294f-984c-4093-a9e3-7f8c2143c728" />
+
 
 ## Instruction Encoding 
 Each instruction begins with an 8 bit instruction byte:
