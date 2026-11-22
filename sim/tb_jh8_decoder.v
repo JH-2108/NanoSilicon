@@ -17,33 +17,31 @@ module tb_jh8_decoder;
     wire[1:0]writeback_select;
     wire flag_write;
     wire[1:0] instruction_bytes;
-
     jh8_decoder dut (
-        .instruction(instruction),
+        .instruction (instruction), 
         .opcode(opcode),
-        .destination(destination),
-        .source(source),
+        .destination(destination), 
+        .source(source), 
         .alu_operation(alu_operation),
-        .register_write(register_write),
+        .register_write(register_write), 
         .memory_read(memory_read),
-        .memory_write(memory_write),
+        .memory_write(memory_write), 
         .immediate_load(immediate_load),
-        .jump(jump),
-        .jump_zero(jump_zero),
+        .jump(jump), 
+        .jump_zero(jump_zero), 
         .jump_not_zero(jump_not_zero),
-        .compare(compare),
-        .halt(halt),
+        .compare(compare), 
+        .halt(halt), 
         .nop(nop),
         .writeback_select(writeback_select),
-        .flag_write(flag_write),
+        .flag_write(flag_write), 
         .instruction_bytes(instruction_bytes)
     );
     initial begin
-        instruction = 8'h00;
+        instruction =8'h00; 
         #10;
-        if (!nop || register_write || instruction_bytes != 1)
+        if (!nop || register_write ||instruction_bytes != 1)
             $fatal(1, "NOP test failed");
-
         instruction = 8'h11;
         #10;
         if (!register_write || writeback_select != 2'b01)
@@ -62,9 +60,8 @@ module tb_jh8_decoder;
 
         instruction = 8'h80;
         #10;
-        if (!register_write || !flag_write || alu_operation != 4'h8)
+        if (!register_write ||!flag_write | | alu_operation != 4'h8)
             $fatal(1, "NOT test failed");
-
         instruction = 8'h90;
         #10;
         if (!jump || instruction_bytes != 2)
@@ -78,12 +75,11 @@ module tb_jh8_decoder;
         #10;
         if (!jump_not_zero || instruction_bytes != 2)
             $fatal(1, "JNZ test failed");
-
         instruction = 8'hC0;
         #10;
         if (!register_write || !memory_read ||
             writeback_select != 2'b11 || instruction_bytes != 2)
-            $fatal(1,"LD test failed");
+            $fatal(1,"LD test failed"); 
 
         instruction = 8'hD0;
         #10;

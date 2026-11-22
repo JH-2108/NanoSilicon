@@ -2,8 +2,8 @@
 module tb_jh8_pc;
     reg clk;
     reg reset;
-    reg enable;
-    reg[7:0] next_pc;
+    reg enable; 
+    reg[7:0]next_pc;
     wire[7:0] pc;
     jh8_pc uut (
         .clk(clk),
@@ -28,8 +28,7 @@ module tb_jh8_pc;
         @(posedge clk);
         #1;
         if(pc !== 8'h01)
-            $fatal(1, "FAIL: One-byte instruction");
-
+            $fatal( 1, "FAIL: One-byte instruction");
         next_pc = 8'h03;
         @(posedge clk);
         #1;
@@ -41,14 +40,12 @@ module tb_jh8_pc;
         #1;
         if (pc !== 8'h80)
             $fatal(1, "FAIL: Jump");
-
         enable = 0;
         next_pc = 8'hFF;
         @(posedge clk);
         #1;
         if(pc !== 8'h80)
             $fatal(1, "FAIL: Hold");
-
         $display("ALL PC TESTS PASSED");
         $finish;
     end
