@@ -17,7 +17,7 @@ module jh8_rom #(
         memory[3] = 8'h90;
         memory[4] = 8'hC4;
         memory[5] = 8'h90;
-        memory[6] = 8'hF0;
+        memory[6] = 8'h00;
         memory[7] = 8'hF0;
     end
     assign instruction = memory[address];
