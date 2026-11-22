@@ -1,0 +1,41 @@
+[*]
+[*] GTKWave Analyzer v4.0.0-prealpha (e40ba79) (w)1999-2022 BSI
+[*] Thu Nov 19 13:43:22 2026
+[*]
+[dumpfile] "C:\Users\Lenovo\Desktop\NanoSilicon\sim\nanosilicon_cpu.vcd"
+[dumpfile_mtime] "Wed Nov 18 18:33:46 2026"
+[dumpfile_size] 40461
+[savefile] "C:\Users\Lenovo\Desktop\NanoSilicon\sim\NanoSilicon.gtkw"
+[timestart] 0
+[size] 1920 983
+[pos] -123 -120
+*-12.965810 56000 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+[treeopen] tb_jh8_cpu.
+[treeopen] tb_jh8_cpu.uut.
+[sst_width] 280
+[signals_width] 220
+[sst_expanded] 1
+[sst_vpaned_height] 281
+@22
+tb_jh8_cpu.uut.alu_result[7:0]
+@28
+tb_jh8_cpu.uut.clk
+tb_jh8_cpu.uut.halted
+@22
+tb_jh8_cpu.uut.immediate_data[7:0]
+tb_jh8_cpu.uut.instruction[7:0]
+@28
+tb_jh8_cpu.uut.memory_write
+@22
+tb_jh8_cpu.uut.opcode[3:0]
+tb_jh8_cpu.uut.pc[7:0]
+@28
+tb_jh8_cpu.uut.reset
+@22
+tb_jh8_cpu.uut.ram.address[7:0]
+tb_jh8_cpu.uut.ram.read_data[7:0]
+tb_jh8_cpu.uut.ram.write_data[7:0]
+@28
+tb_jh8_cpu.uut.ram.write_enable
+[pattern_trace] 1
+[pattern_trace] 0
