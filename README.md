@@ -176,6 +176,27 @@ The 'dump_state()' command was used in the emulatino board's REPL to inspect the
 
 This provided an additional hardware level validation step alonisde the RTL simulation. 
 
+### FPGA Execution demonstration
+NanoSilicon was tested on the Tiny Tapeout FPGA emulation board. These are the following screenshots that were captured during the execution to demonstrate the processor's progression through its program. Each of the screenshot shows the processor at a different program counter value, providing the visual evidence of its operation on the FPGA board. 
+1. Program Counter: 0x02
+<img width="517" height="445" alt="image" src="https://github.com/user-attachments/assets/91c7f3c1-07cf-4d42-9156-d63bddf3a158" />
+2. Program Counter: 0x04
+<img width="878" height="745" alt="image" src="https://github.com/user-attachments/assets/82f68c26-0043-49e6-a9a9-1525a349a0d9" />
+(0x02 and 0x04 are NOT the same image, they just look similar!)
+3. Program Counter: 0x05
+<img width="882" height="746" alt="image" src="https://github.com/user-attachments/assets/722b15f7-6905-42b1-9831-3d98cae9a235" />
+4. Program Counter: 0x07
+<img width="882" height="745" alt="image" src="https://github.com/user-attachments/assets/58e442ce-d5bd-477d-b8be-4ec80375d6cd" />
+5. Program Counter: 0x08
+<img width="882" height="743" alt="image" src="https://github.com/user-attachments/assets/7065ec02-620b-41e3-b84f-d4ce24fecaa1" />
+
+### FPGA Final State Verification
+After executing the test program on the Tiny Tapeout FPGA emulation board, I used the REPL's "dump_state()" command to inspect the board's final state.
+The output showed tt.uo_out = 8, which matches the expected final program counter output of the JH-8 processor. This indicates that the processor was successful in progressing through its program and reached its expected final output state. 
+**REPL Output**:
+<img width="325" height="178" alt="image" src="https://github.com/user-attachments/assets/7eb758ab-48e6-4218-af92-eb5ed64f5b45" />
+
+
 ## ASIC implementation 
 NanoSilicon uses the Tiny Tapeout GlobalFoundries GF180MCU design flow. 
 
