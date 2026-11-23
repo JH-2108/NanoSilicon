@@ -5,7 +5,7 @@ NanoSilicon is a custom 8 bit CPU designed and implemented in Verilog HDL. Its p
 
 The project explores processor architecture, RTL design, simulation, verification and the ASIC implementation flow using the **Tiny Tapeout GF180MCU platform**. 
 
-Project Status: ASIC implementation and automated verification workflows are operational. FPGA hardware validation and timing optimization remain ongoing... 
+Project Status: ASIC implementation and automated verification workflows are operational. FPGA has been tested using the tiny tapeout emulation board and it works.
 
 ## Table of contents 
 * Overview
@@ -51,14 +51,16 @@ The processor also supports conditional branching and a halt instruction.
 |Instruction encoding| variable length|
 |ASIC platform| GF180MCU|
 |Tiny Tapeout tile configuration| 1 x 1 tile|
-|Configured clock frequency| 50MHz|
+|Congifured clock period|33ns|
+|Equivalent target frequency| Approximately 30.3MHz|
 
 ## Architecture 
 The processor consists of the following major components:
 
-* **Control and decoder**: Interprets the instructions and generates processor control signals.
-* **Arithmetic Logic Unit (ALU)**: Contains four independently addressable 8 bit registers.
-* **Register file**: Tracks the current instruction address and handles jumps.
+* **Control and decoder**: Interprets the instructions and generates processor control signals that are required for execution.
+* **Arithmetic Logic Unit (ALU)**: Performs the arithmetic and logical operations, including addition, subtraction and the bitwise operations.
+* **Register file**: Contains four general purpose 8 bit registers that are used to store processor operands and results.
+* **Program Counter**: Tracks the current instruction addresses and handles sequential execution and jumps.
 * **Instruction ROM**: Stores program instructions and immediate values
 * **Data RAM**: Provides 256 bytes of data storage.
 * **Status flags**: Stores zero, carry and negative results.
@@ -119,17 +121,19 @@ For detailed instruction behavior and flag semantics, see the [instruction set d
 Nano Silicon is tested using the RTL simulation and automated verification workflows. 
 
 ### RTL simulation
-The integration testbench is located at: sim/tb_jh8_cpu.v 
+The integration testbench is located at: 
+`sim/tb_jh8_cpu.v `
 
 The simulation uses Icarus Verilog and generates a VCD waveform that can be inspected using GTKWave.
 
 To run the integration simulation from the project root using PowerShell:
 ```text
 $files = Get-ChildItem src -Filter '*.v' |
-  Where-Object {$_.Name -notlike '*_backup.v'} |
-  ForEach-Object { $_.FullName}
+    Where-Object { $_.Name -notlike '*_backup.v} |
+    ForEach-Object { $_.FullName}
 
-iverilog -g2012 -o sim/nanosilicon_text.vvp
+iverilog -g2012 -0 sim/nanosilicon_test.vvp $files sim/tb_jh8_cpu.v
+vvp sim/nanosilicon_test.vvp
 ```
 Open the waveform:
 ```text
@@ -141,11 +145,13 @@ sim/nanosilicon.gtkw
 The recorded CPU integration test demonstrates:
 |Signal|Expected result|
 |---|---|
-|R0|35|
-|R1|10|
-|RAM[128]|35|
+|R0|42|
+|R1|42|
+|RAM[144]|42|
 |Final PC|8|
 |HALTED|1|
+
+The test results matched the expected results. 
 
 The integration test reports:
 PASS: CPU integration test successful 
@@ -160,6 +166,15 @@ The repository includes the automated workflows for:
 |fpga.yaml| FPGA bitstream generation|
 
 The GDS, documentation and test workflows have passed on the project repository's checked runs. 
+
+### FPGA Hardware Validation
+NanoSilicon was tested using the Tiny Tapeout FPGA emulation board (board 3 to be specific). 
+
+The test confirmed that the processor could execute its programmed instructions, advance the program coutner and reach the halt state. 
+
+However, in order for it to run, it needs the command "dump_state()" inside the REPL part of the emulatin board. 
+
+This provided an additional hardware level validation step alonisde the RTL simulation. 
 
 ## ASIC implementation 
 NanoSilicon uses the Tiny Tapeout GlobalFoundries GF180MCU design flow. 
@@ -181,7 +196,9 @@ The recorded physical verification results are:
 |Antenna violations| 0|
 |Hold timing violations| 0|
 
-**Timing limitations**: The recorded implementation report documents a worst setup slack of approximately -2.331ns at a 20ns clock period. Setup timing is therefore not yet closed. Further critical path optimization is required. 
+**Timing limitations**: The latest recorded implementation report shows a worst setup slack (WNS) of around -0.885ns at a 33ns clock period. The design also has 8 setup timing violations and a setup TNS of approximately -3.195ns. 
+
+Even though the physical verification checks have passed, the setup timing is not yet closed. There are still further cricitcal path optimization that may improve the processor's timing performance in the future. 
 
 ## GDS Layout visualization 
 An interactive visualization of the generated GDS layout will be added here. 
@@ -199,11 +216,11 @@ Further technical documentation is available in the docs/ directory:
 ## Future development and improvements 
 Planned areas of development and small improvements would be in:
 * Optimizing critical timing paths and improving setup slack.
-* FPGA based hardware validation
-* Improving processor functionality
-* Expanding automated verification
-* Further ASIC implementation and physical verificaation
-
+* Expanding processor functionality 
+* Expanding automated verification 
+* Improving instruction level verification and test coverage.
+* Further FPGA-based testing
+* Continued ASIC implementation and physical verification.  
 
 ## Small side notes and extras
 JH-8 was named after JH (my name: Jie Hao) and 8: 8 bit. 
