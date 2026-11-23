@@ -44,18 +44,18 @@ module tb_jh8_cpu;
         $display("");
         $display("R0 = %d", uut.registers.registers[0]);
         $display("R1 = %d", uut.registers.registers[1]);
-        $display("RAM[128] = %d", uut.ram.memory[128]);
+        $display("RAM[144] = %d", uut.ram.memory[144]);
         $display("Final PC = %d", pc);
         $display("Halted = %b", halted);
 
         if (!halted)
             $display("FAIL: CPU did not halt");
-        else if (uut.registers.registers[0] !== 8'd35)
+        else if (uut.registers.registers[0] !== 8'd42)
             $display("FAIL: R0 incorrect");
-        else if (uut.registers.registers[1] !== 8'd10)
+        else if (uut.registers.registers[1] !== 8'd42)
             $display("FAIL: R1 incorrect");
-        else if (uut.ram.memory[128] !== 8'd35)
-            $display("FAIL: RAM[128] incorrect");
+        else if (uut.ram.memory[144] !== 8'd42)
+            $display("FAIL: RAM[144] incorrect");
         else
             $display("PASS: CPU integration test successful");
         $finish;
