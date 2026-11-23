@@ -182,6 +182,7 @@ NanoSilicon was tested on the Tiny Tapeout FPGA emulation board. These are the f
 <img width="517" height="445" alt="image" src="https://github.com/user-attachments/assets/91c7f3c1-07cf-4d42-9156-d63bddf3a158" />
 2. Program Counter: 0x04
 <img width="878" height="745" alt="image" src="https://github.com/user-attachments/assets/82f68c26-0043-49e6-a9a9-1525a349a0d9" />
+
 (0x02 and 0x04 are NOT the same image, they just look similar!)
 3. Program Counter: 0x05
 <img width="882" height="746" alt="image" src="https://github.com/user-attachments/assets/722b15f7-6905-42b1-9831-3d98cae9a235" />
