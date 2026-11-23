@@ -129,10 +129,10 @@ The simulation uses Icarus Verilog and generates a VCD waveform that can be insp
 To run the integration simulation from the project root using PowerShell:
 ```text
 $files = Get-ChildItem src -Filter '*.v' |
-    Where-Object { $_.Name -notlike '*_backup.v} |
+    Where-Object { $_.Name -notlike '*_backup.v'} |
     ForEach-Object { $_.FullName}
 
-iverilog -g2012 -0 sim/nanosilicon_test.vvp $files sim/tb_jh8_cpu.v
+iverilog -g2012 -o sim/nanosilicon_test.vvp $files sim/tb_jh8_cpu.v
 vvp sim/nanosilicon_test.vvp
 ```
 Open the waveform:
@@ -168,11 +168,11 @@ The repository includes the automated workflows for:
 The GDS, documentation and test workflows have passed on the project repository's checked runs. 
 
 ### FPGA Hardware Validation
-NanoSilicon was tested using the Tiny Tapeout FPGA emulation board (board 3 to be specific). 
+NanoSilicon was tested using the Tiny Tapeout FPGA emulation board (board 3). 
 
 The test confirmed that the processor could execute its programmed instructions, advance the program coutner and reach the halt state. 
 
-However, in order for it to run, it needs the command "dump_state()" inside the REPL part of the emulatin board. 
+The 'dump_state()' command was used in the emulatino board's REPL to inspect the processor state during testing.
 
 This provided an additional hardware level validation step alonisde the RTL simulation. 
 
